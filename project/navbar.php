@@ -20,7 +20,7 @@ function navbar() {
     }
     if(isset($_SESSION['idu']) && $_SESSION['rola']=='admin') {
         echo '<li class="nav-item">
-        <a class="nav-link" href="#">Zarządzanie zamówieniami</a>
+        <a class="nav-link" href="./manage_orders.php">Zarządzanie zamówieniami</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="#">Zarządzanie użytkownikami</a>
