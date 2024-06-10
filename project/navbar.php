@@ -35,6 +35,9 @@ function navbar() {
     else if (isset($_SESSION['idu']) && $_SESSION['rola']=='klient'){
         echo '<li class="nav-item">
         <a class="nav-link" href="./orders.php">Moje zamówienia</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="./profile.php">Mój profil</a>
       </li>';
     }
     echo '</ul>';
