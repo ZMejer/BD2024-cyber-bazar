@@ -26,8 +26,8 @@ if($_SESSION['rola']=='klient' || !isset($_SESSION['rola'])){
 } else {
     include 'connection.php';
     $conn = connection();
-    $orders_query = "SELECT * from uzytkownicy";
-    $result = mysqli_query($conn, $orders_query); 
+    $users_query = "SELECT * from uzytkownicy WHERE rola='klient'";
+    $result = mysqli_query($conn, $users_query); 
 
     if ($result) {
         while ($row = mysqli_fetch_assoc($result)) {
