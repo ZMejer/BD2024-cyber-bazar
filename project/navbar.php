@@ -23,7 +23,7 @@ function navbar() {
         <a class="nav-link" href="./manage_orders.php">Zarządzanie zamówieniami</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Zarządzanie użytkownikami</a>
+        <a class="nav-link" href="./manage_users.php">Zarządzanie użytkownikami</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="#">Zarządzanie produktami</a>

@@ -35,17 +35,33 @@ if($_SESSION['rola']=='klient' || !isset($_SESSION['rola'])){
             <div class="card w-25 mb-3 me-3">
             <div class="card-body">
                 <h5 class="card-title">'.$row['data'].'</h5>
-                <p class="card-text">Produkt: '.$row['nazwa'].'</p>
+                <p class="card-text">Produkt: '.$row['nazwa'].'</p>';
+
+                echo'<form method="POST" action="./alter_order.php">
+                <input type="hidden" name="order_id" value='.$row['idz'].'>
+                <label>Zmień produkt: </label>
+                <select class="form-control" name="product">';
+                $products_query = 'SELECT DISTINCT nazwa, idp FROM produkty';
+                $result1 = mysqli_query($conn, $products_query); 
+                if ($result1) {
+                    while ($row2 = mysqli_fetch_assoc($result1)) {
+                        echo '<option value='.$row2['idp'].'>'.$row2['nazwa'].'</option>';
+                    }
+                }
+                echo'
+                </select>
+                <button type="submit" class="btn btn-outline-primary mt-1 mb-4">Potwierdź zmianę</button>
+                </form>
                 <p class="card-text">Użytkownik: '.$row['imie'].' '.$row['nazwisko'].'</p>';
                     echo '<form method="POST" action="./cancel_order.php">
                     <input type="hidden" name="cancel_order" value='.$row['idz'].'>
-                    <button type="submit" class="btn btn-outline-danger">Usuń</button>
+                    <button type="submit" class="btn btn-outline-danger">Usuń zamówienie</button>
                     </form>';
             echo '</div>
             </div>';
         }
     }
-}c
+}
 ?>
 </div>
 </div>
