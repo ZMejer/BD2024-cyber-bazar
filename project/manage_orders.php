@@ -26,7 +26,7 @@ if($_SESSION['rola']=='klient' || !isset($_SESSION['rola'])){
 } else {
     include 'connection.php';
     $conn = connection();
-    $orders_query = "SELECT * from zamowienia JOIN produkty ON idp=p_id LEFT JOIN uzytkownicy ON idu=u_id ORDER BY data DESC";
+    $orders_query = "SELECT * from zamowienia LEFT JOIN produkty ON idp=p_id LEFT JOIN uzytkownicy ON idu=u_id ORDER BY data DESC";
     $result = mysqli_query($conn, $orders_query); 
 
     if ($result) {
@@ -34,8 +34,14 @@ if($_SESSION['rola']=='klient' || !isset($_SESSION['rola'])){
             echo'
             <div class="card w-25 mb-3 me-3">
             <div class="card-body">
-                <h5 class="card-title">'.$row['data'].'</h5>
-                <p class="card-text">Produkt: '.$row['nazwa'].'</p>';
+                <h5 class="card-title">'.$row['data'].'</h5>';
+
+                if(is_null($row['nazwa'])){
+                    echo'<p class="card-text">Produkt: usunięty</p>';
+                } else {
+                    echo'<p class="card-text">Produkt: '.$row['nazwa'].'</p>';
+                }
+                
 
                 echo'<form method="POST" action="./alter_order.php">
                 <input type="hidden" name="order_id" value='.$row['idz'].'>

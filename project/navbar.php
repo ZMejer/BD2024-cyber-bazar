@@ -29,7 +29,7 @@ function navbar() {
         <a class="nav-link" href="./manage_products.php">Zarządzanie produktami</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Zarządzanie sklepami</a>
+        <a class="nav-link" href="./manage_stores.php">Zarządzanie sklepami</a>
       </li>';
     }
     else if (isset($_SESSION['idu']) && $_SESSION['rola']=='klient'){
