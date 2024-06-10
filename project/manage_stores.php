@@ -102,6 +102,14 @@ else if ($_GET['alter_stock'] == 'value_error') {
     }
 ?>
 </div>
+<h3 class='mt-5'>Dodaj sklep</h3>
+<form method="POST" action="./add_store.php">
+<label>Adres</label>
+<input type="text" class="form-control mb-4" name="address" required>
+<label>Miasto</label>
+<input type="text" class="form-control mb-4" name="city" required>
+<button type="submit" class="btn btn-primary mb-5">Dodaj sklep</button>
+</form>
 </div>
 </body>
 </html>
