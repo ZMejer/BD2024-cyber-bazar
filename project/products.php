@@ -63,11 +63,16 @@ navbar();
             <div class="card-body">
                 <h5 class="card-title">'.$row['nazwa'].'</h5>
                 <p class="card-text">'.$row['cena'].' zł</p>
-                <p class="card-text">Kategoria: '.$row['kategoria'].'</p>
-                <form method="POST" action="./place_order.php">
-                <input type="hidden" name="order_product" value="'.$row['idp'].'">
-                <button type="submit" class="btn btn-primary">Zamów</button>
-                </form>
+                <p class="card-text">Kategoria: '.$row['kategoria'].'</p>';
+                session_start();
+                if($_SESSION['rola']=='klient'){
+                    echo'
+                    <form method="POST" action="./place_order.php">
+                    <input type="hidden" name="order_product" value="'.$row['idp'].'">
+                    <button type="submit" class="btn btn-primary">Zamów</button>
+                    </form>';
+                }
+                echo'
                 <p>
                 <button class="btn btn-outline-secondary mt-2" type="button" data-bs-toggle="collapse" data-bs-target="#'.$idp.'" aria-expanded="false" aria-controls="'.$idp.'">
                   Sprawdź dostępność w sklepach

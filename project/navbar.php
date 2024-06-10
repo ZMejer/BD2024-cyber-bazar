@@ -8,13 +8,16 @@ function navbar() {
     <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNav">
-    <ul class="navbar-nav">
-      <li class="nav-item active">
-        <a class="nav-link" href="./products.php">Produkty</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="./stores.php">Sklepy</a>
-      </li>';
+    <ul class="navbar-nav">';
+    if(!isset($_SESSION['rola']) || $_SESSION['rola']=='klient'){
+      echo '
+        <li class="nav-item active">
+          <a class="nav-link" href="./products.php">Produkty</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="./stores.php">Sklepy</a>
+        </li>';
+    }
     if(isset($_SESSION['idu']) && $_SESSION['rola']=='admin') {
         echo '<li class="nav-item">
         <a class="nav-link" href="#">Zarządzanie zamówieniami</a>
