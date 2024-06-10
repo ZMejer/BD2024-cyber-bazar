@@ -42,7 +42,7 @@ navbar();
                   if ($res) {
                       if(mysqli_num_rows($res) > 0) {
                           while ($row1 = mysqli_fetch_assoc($res)) {
-                              echo '<p>'.$row1['nazwa'].', '.$row1['cena'].', ilość: '.$row1['ilosc'].'</p>';
+                              echo '<p>'.$row1['nazwa'].', '.$row1['cena'].' zł, ilość: '.$row1['ilosc'].'</p>';
                           }
                       } else {
                           echo '<p>Brak produktów</p>';
