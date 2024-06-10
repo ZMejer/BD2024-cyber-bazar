@@ -26,7 +26,7 @@ if($_SESSION['rola']=='klient' || !isset($_SESSION['rola'])){
 } else {
     include 'connection.php';
     $conn = connection();
-    $orders_query = "SELECT * from zamowienia JOIN produkty ON idp=p_id JOIN uzytkownicy ON idu=u_id ORDER BY data DESC";
+    $orders_query = "SELECT * from zamowienia JOIN produkty ON idp=p_id LEFT JOIN uzytkownicy ON idu=u_id ORDER BY data DESC";
     $result = mysqli_query($conn, $orders_query); 
 
     if ($result) {
@@ -51,8 +51,15 @@ if($_SESSION['rola']=='klient' || !isset($_SESSION['rola'])){
                 echo'
                 </select>
                 <button type="submit" class="btn btn-outline-primary mt-1 mb-4">Potwierdź zmianę</button>
-                </form>
-                <p class="card-text">Użytkownik: '.$row['imie'].' '.$row['nazwisko'].'</p>';
+                </form>';
+                if (is_null($row['imie'])){
+                    echo'
+                    <p class="card-text">Użytkownik: usunięty</p>';
+                } else {
+                    echo'
+                    <p class="card-text">Użytkownik: '.$row['imie'].' '.$row['nazwisko'].'</p>';
+                }
+                
                     echo '<form method="POST" action="./cancel_order.php">
                     <input type="hidden" name="cancel_order" value='.$row['idz'].'>
                     <button type="submit" class="btn btn-outline-danger">Usuń zamówienie</button>

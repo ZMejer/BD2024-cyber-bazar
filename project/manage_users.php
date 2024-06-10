@@ -24,7 +24,28 @@ if($_SESSION['rola']=='klient' || !isset($_SESSION['rola'])){
     Brak uprawnień do zarządzania użytkownikami.
     </div>';
 } else {
+    include 'connection.php';
+    $conn = connection();
+    $orders_query = "SELECT * from uzytkownicy";
+    $result = mysqli_query($conn, $orders_query); 
 
+    if ($result) {
+        while ($row = mysqli_fetch_assoc($result)) {
+            echo'
+            <div class="card w-25 mb-3 me-3">
+            <div class="card-body">
+                <h5 class="card-title">'.$row['imie'].' '.$row['nazwisko'].'</h5>
+                <p class="card-text">Adres: '.$row['adres'].'</p>';
+                echo'<p class="card-text">Miasto: '.$row['miasto'].'</p>';
+                echo'<p class="card-text">Telefon: '.$row['telefon'].'</p>';
+                echo '<form method="POST" action="./delete_user.php">
+                    <input type="hidden" name="user_id" value='.$row['idu'].'>
+                    <button type="submit" class="btn btn-outline-danger">Usuń użytkownika</button>
+                    </form>';
+            echo '</div>
+            </div>';
+        }
+    }
 }
 ?>
 </body>
