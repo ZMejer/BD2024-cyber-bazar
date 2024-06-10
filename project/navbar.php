@@ -13,7 +13,7 @@ function navbar() {
         <a class="nav-link" href="./products.php">Produkty</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Sklepy</a>
+        <a class="nav-link" href="./stores.php">Sklepy</a>
       </li>';
     if(isset($_SESSION['idu']) && $_SESSION['rola']=='admin') {
         echo '<li class="nav-item">
